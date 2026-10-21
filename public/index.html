@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f1e8">
+    <meta name="description" content="Et ærlig Avreise-skilt for paraplyværet.">
+    <title>Trenger du paraply? · Avreise</title>
+    <link rel="stylesheet" href="styles.css?v=8">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Gå til anbefalingen</a>
+    <div class="page-shell">
+      <main id="main-content">
+        <section class="intro" aria-labelledby="page-title">
+          <h1 id="page-title">Trenger du paraply?</h1>
+          <svg class="headline-art" viewBox="0 0 180 130" aria-hidden="true" focusable="false">
+            <path class="art-accent" d="M18 64c14-34 39-50 72-50s58 16 72 50c-11-6-22-6-33 0-11-6-22-6-33 0-11-6-22-6-33 0-11-6-22-6-33 0Z" />
+            <path class="art-ink" d="M90 64v34c0 10 6 16 15 16 8 0 13-5 13-11" />
+            <path class="art-ink" d="M42 25v14M77 14v14M121 18v14" />
+          </svg>
+        </section>
+
+        <section class="dashboard-grid" aria-label="Værstatus">
+          <article class="hero-card" id="hero-card">
+            <div class="hero-card-topline">
+              <span class="status-kicker">VÆRSTATUS</span>
+              <span class="mode-label" id="mode-label">—</span>
+            </div>
+            <div class="status-heading-row">
+              <div class="status-symbol" id="status-symbol" aria-hidden="true">?</div>
+              <div>
+                <p class="status-label" id="status-label">Laster værdata</p>
+                <h2 id="status-title">—</h2>
+              </div>
+            </div>
+            <p class="status-message" id="status-message" aria-live="polite">Vi henter værdata for avreisevinduet.</p>
+            <div class="status-rule" id="status-rule">—</div>
+
+            <div class="forecast-meta">
+              <div>
+                <span class="meta-label">AVREISEVINDU</span>
+                <strong id="forecast-window">—</strong>
+              </div>
+              <div>
+                <span class="meta-label">OPPDATERT</span>
+                <strong id="last-updated">—</strong>
+              </div>
+              <div>
+                <span class="meta-label">STED</span>
+                <strong id="status-location">—</strong>
+              </div>
+              <button class="forecast-details-button" type="button" id="open-details" aria-haspopup="dialog" aria-controls="details-drawer">
+                <span class="meta-label">KONTROLLER</span>
+                <strong>Vis detaljer <span aria-hidden="true">↗</span></strong>
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <section class="details-drawer" id="details-drawer" hidden role="dialog" aria-modal="true" aria-labelledby="details-drawer-title">
+          <button class="details-backdrop" type="button" id="close-details-backdrop" aria-label="Lukk kontroller og detaljer"></button>
+          <div class="details-dialog">
+            <div class="drawer-heading">
+              <div>
+                <p class="eyebrow">KONTROLLER OG DETALJER</p>
+                <h2 id="details-drawer-title">Vær for avreisen</h2>
+              </div>
+              <button class="icon-button" type="button" id="close-details" aria-label="Lukk kontroller og detaljer">×</button>
+            </div>
+
+            <div class="details-grid">
+              <section class="panel location-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">STED</p>
+                    <h2 id="location-name">Ikke valgt</h2>
+                    <span class="location-mode" id="location-mode">Mangler sted</span>
+                  </div>
+                </div>
+                <p class="panel-copy" id="location-coordinates">Velg en posisjon for å se været.</p>
+                <button class="button button-dark" type="button" id="open-location">Endre sted</button>
+              </section>
+
+              <section class="panel timeline-panel">
+                <div class="panel-heading compact-heading">
+                  <div>
+                    <p class="eyebrow">NEDBØR</p>
+                    <h2>Neste 90 min</h2>
+                  </div>
+                </div>
+                <div class="timeline" id="timeline" aria-label="Nedbør de neste 90 minuttene"></div>
+                <div class="metric-row">
+                  <div>
+                    <span class="meta-label">MAKS. NEDBØR</span>
+                    <strong id="max-precipitation">—</strong>
+                  </div>
+                  <div>
+                    <span class="meta-label">TEMPERATUR</span>
+                    <strong id="temperature">—</strong>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel source-panel">
+                <div class="source-line">
+                  <span class="source-dot" aria-hidden="true"></span>
+                  <span id="source-status">Værdata fra MET Norway</span>
+                </div>
+                <p class="source-copy" id="notice">—</p>
+                <a href="https://api.met.no/weatherapi/nowcast/2.0/documentation" target="_blank" rel="noreferrer">Om værkilden ↗</a>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="control-strip" aria-label="Oppdatering">
+          <button class="button button-accent" type="button" id="refresh-weather">Oppdater nå <span aria-hidden="true">↻</span></button>
+        </section>
+
+        <section class="location-drawer" id="location-drawer" hidden role="dialog" aria-modal="true" aria-labelledby="location-drawer-title">
+          <div class="drawer-heading">
+            <div>
+              <p class="eyebrow">STED OG PERSONVERN</p>
+              <h2 id="location-drawer-title">Hvor skal vi se?</h2>
+            </div>
+            <button class="icon-button" type="button" id="close-location" aria-label="Lukk stedvelger">×</button>
+          </div>
+          <p class="drawer-copy">Velg én av to måter: hent en posisjon fra denne enheten, eller lagre et fast sted med koordinater. Nettleseren spør først når du trykker på knappen. Koordinatene sendes til appens server og videre til MET Norway for værdata. Vi følger ikke posisjonen din i bakgrunnen.</p>
+          <div class="location-actions">
+            <button class="button button-dark" type="button" id="use-geolocation">Bruk enhetens posisjon</button>
+            <span class="permission-note" id="permission-note" role="status" aria-live="polite">Nettleseren spør om tillatelse først når du trykker.</span>
+          </div>
+          <div class="form-divider"><span>eller skriv inn et fast sted</span></div>
+          <form class="manual-location-form" id="manual-location-form">
+            <label>
+              <span>Stedsnavn</span>
+              <input name="label" type="text" value="" maxlength="80" autocomplete="address-level2" placeholder="For eksempel hjemme" required>
+            </label>
+            <label>
+              <span>Breddegrad</span>
+              <input name="latitude" type="number" min="-90" max="90" step="0.0001" placeholder="59.9139" required>
+            </label>
+            <label>
+              <span>Lengdegrad</span>
+              <input name="longitude" type="number" min="-180" max="180" step="0.0001" placeholder="10.7522" required>
+            </label>
+            <button class="button button-accent" type="submit">Lagre fast sted</button>
+          </form>
+          <p class="manual-location-hint">Koordinater kan hentes fra karttjenesten du vanligvis bruker. De avrundes til fire desimaler og lagres bare på denne enheten.</p>
+          <p class="form-error" id="form-error" role="alert"></p>
+        </section>
+      </main>
+
+    </div>
+    <noscript>
+      <div class="noscript-message">Denne værskjermen trenger JavaScript for å hente og oppdatere værdata. Åpne <code>status.png</code> for et statisk bilde.</div>
+    </noscript>
+    <script type="module" src="app.js?v=8"></script>
+  </body>
+</html>

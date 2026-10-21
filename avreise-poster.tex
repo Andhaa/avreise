@@ -1,0 +1,207 @@
+% Avreise - one-page poster, direction B: the useful route
+%
+% Overleaf-compatible source. Upload the poster-assets/ folder together with
+% this file. The two editorial photos contain the real Avreise webpage
+% treatment on the reused devices.
+
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{3em}
+\sloppy
+
+% A3 portrait with a deliberately generous paper margin.
+\setlength{\paperwidth}{297mm}
+\setlength{\paperheight}{420mm}
+\setlength{\pdfpagewidth}{\paperwidth}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+\setlength{\oddsidemargin}{13mm}
+\setlength{\evensidemargin}{13mm}
+\setlength{\topmargin}{13mm}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\textwidth}{271mm}
+\setlength{\textheight}{394mm}
+\setlength{\footskip}{0pt}
+
+% Palette copied from the weather-signage app.
+\definecolor{paper}{rgb}{0.961,0.945,0.910}
+\definecolor{paperdeep}{rgb}{0.914,0.890,0.843}
+\definecolor{ink}{rgb}{0.114,0.114,0.106}
+\definecolor{muted}{rgb}{0.424,0.408,0.369}
+\definecolor{line}{rgb}{0.784,0.757,0.710}
+\definecolor{signal}{rgb}{0.949,0.788,0.298}
+\definecolor{signalsoft}{rgb}{0.973,0.906,0.647}
+\definecolor{mint}{rgb}{0.898,0.933,0.910}
+\definecolor{whitepaper}{rgb}{1.000,0.992,0.973}
+
+\newcommand{\micro}[1]{%
+  {\sffamily\scriptsize\bfseries\color{muted}\uppercase{#1}}%
+}
+
+\newcommand{\hairline}{%
+  \vspace{2.2mm}\textcolor{line}{\rule{\linewidth}{0.35pt}}\vspace{2.2mm}%
+}
+
+\newcommand{\numbertag}[1]{%
+  \colorbox{signal}{\makebox[9mm][c]{\strut\sffamily\bfseries #1}}%
+}
+
+\newcommand{\photoOrPlaceholder}[2]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=\linewidth]{#1}%
+  }{%
+    \fcolorbox{line}{whitepaper}{%
+      \parbox[c][50mm][c]{0.94\linewidth}{\centering\sffamily\scriptsize\color{muted}%
+        Add \texttt{#1} to the Overleaf project}%
+    }%
+  }%
+  \par\vspace{1.8mm}%
+  {\sffamily\scriptsize\bfseries\color{ink}#2}%
+}
+
+\newcommand{\routeStep}[3]{%
+  \begin{minipage}[t]{0.235\linewidth}
+    \numbertag{#1}\par\vspace{2.3mm}
+    {\sffamily\small\bfseries\color{ink}#2}\par\vspace{1mm}
+    {\sffamily\scriptsize\color{muted}#3}
+  \end{minipage}%
+}
+
+\newcommand{\timelineStep}[3]{%
+  \begin{minipage}[t]{0.185\linewidth}
+    \numbertag{#1}\par\vspace{1.8mm}
+    {\sffamily\scriptsize\bfseries\color{ink}#2}\par\vspace{0.7mm}
+    {\sffamily\scriptsize\color{muted}#3}
+  \end{minipage}%
+}
+
+\begin{document}
+\pagecolor{paper}
+
+% -----------------------------------------------------------------------------
+% Masthead: process-led, but with the same quiet product voice as the app.
+% -----------------------------------------------------------------------------
+\begin{minipage}[t]{0.73\linewidth}
+  \micro{Avreise / en liten teknisk fortelling}\par\vspace{4mm}
+  {\rmfamily\fontsize{34}{34}\selectfont\color{ink}
+    En gammel skjerm kan\par fortsatt gjøre nytte.}\par\vspace{4mm}
+  {\sffamily\large\color{muted}
+    Avreise flytter værdata fra nettet og inn i gangen - akkurat der beslutningen tas.}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.20\linewidth}\raggedleft
+  \includegraphics[width=34mm]{poster-assets/umbrella.png}\par\vspace{3mm}
+  \micro{gjenbruk / værdata / skilt}
+\end{minipage}
+
+\hairline
+
+% The single question, held in a restrained yellow band.
+\fcolorbox{ink}{signalsoft}{%
+  \parbox{0.94\linewidth}{%
+    \micro{det enkle spørsmålet}\par\vspace{2mm}
+    {\rmfamily\fontsize{27}{28}\selectfont\color{ink}Trenger du paraply?}\hfill
+    {\sffamily\small\bfseries\color{ink}ET NYTT LIV FOR GAMLE SKJERMER}%
+  }%
+}
+
+\vspace{5mm}
+
+% -----------------------------------------------------------------------------
+% Route: the four-step process that defines direction B.
+% -----------------------------------------------------------------------------
+\micro{Slik blir et avskrevet display et Avreise-skilt}\par\vspace{2.8mm}
+\rule{\linewidth}{0.35pt}\par\vspace{3.5mm}
+\routeStep{1}{Samle}{En utslitt telefon, et nettbrett eller en Kindle.}\hfill
+\routeStep{2}{Vibekod}{Be om et ærlig skilt med ett spørsmål.}\hfill
+\routeStep{3}{Forenkle}{Regn mulig / regn ikke ventet / ukjent.}\hfill
+\routeStep{4}{Publiser}{En browser-visning og en statisk PNG.}
+\par\vspace{3mm}\rule{\linewidth}{0.35pt}
+
+\vspace{5mm}
+
+% -----------------------------------------------------------------------------
+% Editorial evidence: main e-ink image plus smaller tablet detail.
+% -----------------------------------------------------------------------------
+\begin{minipage}[t]{0.61\linewidth}
+  \micro{02 / lavteknologisk plassering}\par\vspace{2.5mm}
+  \photoOrPlaceholder{poster-assets/ereader-shelf-web.png}{En e-leser trenger bare en oppdatert bildefil - ikke en ny app.}
+  \par\vspace{2.5mm}
+  {\sffamily\scriptsize\color{muted}
+    Det samme Avreise-skiltet kan bo på en gammel Kindle, på et nettbrett eller på en telefon som ellers ville blitt liggende i en skuff.}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.33\linewidth}
+  \micro{Fra data til tegn}\par\vspace{2.5mm}
+  {\rmfamily\fontsize{19}{20}\selectfont\color{ink}
+    Værdata blir et enkelt skilt.}\par\vspace{2mm}
+  {\sffamily\small\color{muted}
+    MET Norway ser på de neste 90 minuttene. Et lite beslutningslag gjør prognosen om til en synlig anbefaling i det øyeblikket du tar på deg jakken.}\par\vspace{4mm}
+  {\sffamily\small\bfseries\color{ink}Trenger du paraply?}\par\vspace{1mm}
+  {\sffamily\scriptsize\color{muted}
+    Spørsmålet står fast. Det er svaret som hentes på nytt.}\par\vspace{4mm}
+  \photoOrPlaceholder{poster-assets/tablet-entryway-web.png}{01 / samme side, ny skjerm, rett ved døren.}
+\end{minipage}
+
+\vspace{5mm}
+
+% -----------------------------------------------------------------------------
+% The two presentation targets, kept as flat ruled fields rather than cards.
+% -----------------------------------------------------------------------------
+\micro{To utgaver, samme beslutningslogikk}\par\vspace{2.5mm}
+\begin{minipage}[t]{0.48\linewidth}
+  \fcolorbox{ink}{signalsoft}{%
+    \parbox{0.91\linewidth}{%
+      {\sffamily\large\bfseries\color{ink}Browser}\par\vspace{1.5mm}
+      {\sffamily\small\color{muted}Interaktiv visning for et gammelt nettbrett eller en telefon. Værskjermen kan oppdateres når du står i gangen.}%
+    }%
+  }
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+  \fcolorbox{ink}{mint}{%
+    \parbox{0.91\linewidth}{%
+      {\sffamily\large\bfseries\color{ink}Statisk PNG}\par\vspace{1.5mm}
+      {\sffamily\small\color{muted}Det samme svaret som et robust bilde for Kindle, e-ink og gamle bildefremvisere.}%
+    }%
+  }
+\end{minipage}
+
+\vspace{5mm}
+
+% -----------------------------------------------------------------------------
+% Prompt timeline: short, thematic, and tied to the making process.
+% -----------------------------------------------------------------------------
+\micro{Prompttidslinje}\par\vspace{2.5mm}
+\rule{\linewidth}{0.35pt}\par\vspace{3mm}
+\timelineStep{1}{Spørsmålet}{Ett tydelig værspørsmål.}\hfill
+\timelineStep{2}{Gjenbruk}{Bruk det du allerede har.}\hfill
+\timelineStep{3}{Data}{MET + neste 90 min.}\hfill
+\timelineStep{4}{Form}{Gjør svaret til et tegn.}\hfill
+\timelineStep{5}{Publiser}{Browser + PNG.}
+
+\vfill
+
+\rule{\linewidth}{0.35pt}\par\vspace{2.5mm}
+\begin{minipage}[t]{0.70\linewidth}
+  {\sffamily\small\color{muted}
+    Vibecoding som arbeidsmåte: prompt - se - juster - publiser.}\par\vspace{1mm}
+  {\sffamily\scriptsize\color{muted}
+    MET Norway / 90 minutters avreisevindu / samme svar i browser og PNG}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.25\linewidth}\raggedleft
+  {\sffamily\scriptsize\bfseries\color{ink}AVREISE}\par\vspace{1mm}
+  {\sffamily\scriptsize\color{muted}et lite produkt for gangen}
+\end{minipage}
+
+\end{document}

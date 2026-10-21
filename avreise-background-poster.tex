@@ -1,0 +1,141 @@
+% Avreise - photographic background poster
+% Overleaf-compatible source. Upload this file together with poster-assets/.
+% The portrait crop is derived from exec-4bac1eae-f888-4577-bc95-dd07f151b1f4.png.
+
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{3em}
+\sloppy
+
+% A3 portrait, full-bleed image with no page margins.
+\setlength{\paperwidth}{297mm}
+\setlength{\paperheight}{420mm}
+\setlength{\pdfpagewidth}{\paperwidth}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\textwidth}{\paperwidth}
+\setlength{\textheight}{\paperheight}
+\setlength{\footskip}{0pt}
+
+\definecolor{paper}{rgb}{0.961,0.945,0.910}
+\definecolor{ink}{rgb}{0.114,0.114,0.106}
+\definecolor{muted}{rgb}{0.424,0.408,0.369}
+\definecolor{line}{rgb}{0.784,0.757,0.710}
+\definecolor{signalsoft}{rgb}{0.973,0.906,0.647}
+\definecolor{mint}{rgb}{0.898,0.933,0.910}
+
+\hypersetup{hidelinks}
+
+\newcommand{\micro}[1]{%
+  {\sffamily\scriptsize\bfseries\color{muted}\uppercase{#1}}%
+}
+
+\newcommand{\paperbox}[2]{%
+  \colorbox{paper}{\parbox{#1}{#2}}%
+}
+
+\newcommand{\formatfield}[2]{%
+  \begin{minipage}[t]{0.465\linewidth}
+    {\sffamily\scriptsize\bfseries\color{ink}#1}\par\vspace{1mm}
+    {\sffamily\scriptsize\color{muted}#2}
+  \end{minipage}%
+}
+
+\begin{document}
+
+\begin{minipage}[t][\paperheight][t]{\paperwidth}
+  % The portrait crop keeps the reused e-ink device in the visual centre of
+  % the original landscape implementation photo. It is zero-height here so
+  % the text remains on the same page as the background.
+  \noindent\makebox[0pt][l]{%
+    \raisebox{-\height}[0pt][0pt]{%
+      \includegraphics[width=\paperwidth,height=\paperheight]{poster-assets/compact-ereader-poster-bg.png}%
+    }%
+  }%
+
+  \vspace*{18mm}
+
+  % Masthead and thesis, held in the app's warm paper field.
+  \hspace*{20mm}%
+  \paperbox{157mm}{%
+    \micro{Avreise / gjenbrukt skilt}\par\vspace{4mm}
+    {\rmfamily\fontsize{36}{35}\selectfont\color{ink}
+      En gammel skjerm\par kan gjøre nytte.}\par\vspace{4mm}
+    {\sffamily\small\color{muted}
+      Et gammelt display. Et nytt sted ved døren.}%
+  }
+
+  \vspace{6mm}
+
+  % The question is the signal-yellow anchor from the live weather screen.
+  \hspace*{20mm}%
+  \fcolorbox{ink}{signalsoft}{%
+    \parbox{145mm}{%
+      \micro{Det enkle spørsmålet}\par\vspace{2mm}
+      {\rmfamily\fontsize{27}{28}\selectfont\color{ink}Trenger du paraply?}%
+    }%
+  }
+
+  \vfill
+
+  % Lower editorial text field and the QR callout sit as two related ruled
+  % fields, leaving the photograph visible as evidence rather than decoration.
+  \hspace*{20mm}%
+  \begin{minipage}[b]{159mm}
+    \fcolorbox{ink}{paper}{%
+      \parbox{153mm}{%
+        \micro{En ny oppgave for gamle skjermer}\par\vspace{2.5mm}
+        {\rmfamily\fontsize{19}{20}\selectfont\color{ink}
+          Avreise gir avskrevne skjermer en ny oppgave.}\par\vspace{2.2mm}
+        {\sffamily\small\color{muted}
+          Gamle e-lesere, nettbrett og telefoner kan bli små værskilt i gangen - akkurat der du bestemmer deg for å ta med paraply.}\par\vspace{4mm}
+        \textcolor{line}{\rule{\linewidth}{0.35pt}}\par\vspace{3mm}
+        \formatfield{Web}{Plattformuavhengig gjennom nettleseren. Samme visning på telefon, nettbrett, Raspberry Pi og andre gamle skjermer.}\hfill
+        \formatfield{.PNG}{Hvis enheten er for gammel for JavaScript, viser den det samme svaret som et statisk bilde.}
+      }%
+    }
+  \end{minipage}%
+  \hspace{5mm}%
+  \begin{minipage}[b]{75mm}
+    \fcolorbox{ink}{mint}{%
+      \parbox{69mm}{%
+        \micro{Se det i bruk}\par\vspace{2.5mm}
+        \centering
+        \includegraphics[width=31mm]{poster-assets/arhp-umbrella-qr.png}\par\vspace{2mm}
+        {\sffamily\scriptsize\color{muted}Skann for live-demoen.}\par\vspace{1.5mm}
+        {\sffamily\scriptsize\bfseries\color{ink}
+          \href{https://arhp.no/umbrella/}{arhp.no/umbrella/} $\nearrow$}%
+      }%
+    }
+  \end{minipage}
+
+  \vspace{5mm}
+
+  \hspace*{20mm}%
+  \begin{minipage}[t]{257mm}
+    \textcolor{paper}{\rule{\linewidth}{0.35pt}}\par\vspace{2.5mm}
+    {\sffamily\scriptsize\bfseries\color{paper}
+      VIBEKODET $\rightarrow$ TESTET $\rightarrow$ PUBLISERT\hfill MET NORWAY $\cdot$ 90 MIN}\par\vspace{1mm}
+    {\sffamily\scriptsize\color{paper}
+      Et lite produkt for gangen. Et ærlig svar før du går.}
+  \end{minipage}
+
+  \vspace*{5mm}
+\end{minipage}
+
+\end{document}

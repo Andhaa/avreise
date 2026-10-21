@@ -1,0 +1,13 @@
+{
+  "name": "avreise",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A low-power Norwegian weather signage app for the front door.",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "check": "node --check server.mjs && node --check public/app.js && node --check public/location.mjs && node --check src/domain/umbrella.mjs && node --check src/providers/met.mjs && node --check src/providers/fixture.mjs && node --check src/render/static-image.mjs",
+    "test": "node --test"
+  }
+}

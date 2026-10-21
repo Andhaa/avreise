@@ -1,0 +1,7 @@
+node_modules/
+tmp/
+.env
+.env.*
+*.log
+.DS_Store
+SECURITY-ASSESSMENT.md
